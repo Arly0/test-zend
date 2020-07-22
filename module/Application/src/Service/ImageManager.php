@@ -34,10 +34,27 @@ class ImageManager
             
             $files[] = $entry;
         }
+        closedir($handle);
         
         // Return the list of uploaded files.
         return $files;
     }  
+
+    public function deleteImageByName($fileName)
+    {
+        $handle  = opendir($this->saveToDir);
+        while (false !== ($entry = readdir($handle))) {
+            
+            if($entry=='.' || $entry=='..')
+                continue; // Skip current dir and parent dir.
+            if($entry === $fileName){
+                unlink($this->saveToDir . $entry);
+            }
+        }
+        closedir($handle);
+
+        return true;
+    }
 
      // Returns the path to the saved image file.
      public function getImagePathByName($fileName) 

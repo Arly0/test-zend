@@ -52,7 +52,7 @@
         <div class="img-thumbnail">
                 
         <img src="<?= $this->url('images', ['action'=>'file'], 
-                ['query'=>['name'=>$file, 'thumbnail'=>true]]); ?>">
+                ['query'=>['name'=>$file, 'thumbnail'=>false]]); ?>">
                 
         <div class="caption">
             <h3><?php echo $file; ?></h3>                    
@@ -60,6 +60,8 @@
             <a target="_blank" href="<?= $this->url('images', ['action'=>'file'], 
             ['query'=>['name'=>$file]]); ?>" 
             class="btn btn-default" role="button">Show in Natural Size</a>
+            <a href="<?= $this->url('images', ['action'=>'delete'], 
+            ['query'=>['name'=>$file]]); ?>">Remove from folder</a>
             </p>
         </div>
         </div>
